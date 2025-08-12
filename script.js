@@ -5,19 +5,30 @@ document.addEventListener('DOMContentLoaded', function() {
   const signupForm = document.getElementById('signupForm');
   const loginForm = document.getElementById('loginForm');
 
-  showSignup.addEventListener('click', function() {
-    this.classList.add('active');
-    showLogin.classList.remove('active');
-    signupForm.classList.remove('hidden');
-    loginForm.classList.add('hidden');
-  });
+  function toggleForms(showSignupForm) {
+    if (showSignupForm) {
+      showSignup.classList.add('active');
+      showLogin.classList.remove('active');
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+    } else {
+      showLogin.classList.add('active');
+      showSignup.classList.remove('active');
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+    }
+    
+    // Scroll to top of form on mobile
+    if (window.innerWidth <= 900) {
+      document.querySelector('.auth-box').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }
 
-  showLogin.addEventListener('click', function() {
-    this.classList.add('active');
-    showSignup.classList.remove('active');
-    loginForm.classList.remove('hidden');
-    signupForm.classList.add('hidden');
-  });
+  showSignup.addEventListener('click', () => toggleForms(true));
+  showLogin.addEventListener('click', () => toggleForms(false));
 
   // Password Visibility Toggle
   document.querySelectorAll('.toggle-password').forEach(button => {
@@ -28,8 +39,25 @@ document.addEventListener('DOMContentLoaded', function() {
       input.type = type;
       this.classList.toggle('fa-eye');
       this.classList.toggle('fa-eye-slash');
+      
+      // Focus the input after toggle on mobile
+      if (window.innerWidth <= 600) {
+        input.focus();
+      }
     });
   });
+
+  // Adjust input label positioning for mobile
+  if (window.innerWidth <= 600) {
+    document.querySelectorAll('.input-group input').forEach(input => {
+      input.addEventListener('focus', function() {
+        const label = this.nextElementSibling;
+        if (label && label.tagName === 'LABEL') {
+          label.style.fontSize = '0.75rem';
+        }
+      });
+    });
+  }
 
   // Password Strength Indicator
   const passwordInput = document.getElementById('signupPassword');
@@ -39,16 +67,19 @@ document.addEventListener('DOMContentLoaded', function() {
       const strengthText = this.closest('.password-group').querySelector('.strength-text');
       const strength = calculatePasswordStrength(this.value);
       
-      strengthBar.style.width = strength.percentage + '%';
-      strengthBar.style.backgroundColor = strength.color;
-      strengthText.textContent = strength.text;
-      strengthText.style.color = strength.color;
+      if (strengthBar && strengthText) {
+        strengthBar.style.width = strength.percentage + '%';
+        strengthBar.style.backgroundColor = strength.color;
+        strengthText.textContent = strength.text;
+        strengthText.style.color = strength.color;
+      }
     });
   }
 
   // Form Submission Handling
-  document.getElementById('signupBtn')?.addEventListener('click', handleFormSubmit);
-  document.getElementById('loginBtn')?.addEventListener('click', handleFormSubmit);
+  document.querySelectorAll('.auth-btn').forEach(btn => {
+    btn.addEventListener('click', handleFormSubmit);
+  });
 
   // Helper Functions
   function calculatePasswordStrength(password) {
@@ -77,4 +108,13 @@ document.addEventListener('DOMContentLoaded', function() {
       alert('Form submitted successfully!');
     }, 1500);
   }
+
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth <= 900) {
+      document.querySelector('.page').style.flexDirection = 'column';
+    } else {
+      document.querySelector('.page').style.flexDirection = 'row';
+    }
+  });
 });
