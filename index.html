@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TOTLE Login/Signup</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <!-- Left Panel with Image -->
+    <div class="side-panel">
+      <div class="side-content">
+        <h1>Welcome to TOTLE</h1>
+        <p>Discover the easiest way to learn, connect, and grow. Join our platform and start your journey today!</p>
+        <div class="features">
+          <div class="feature">
+            <i class="fas fa-brain"></i>
+            <div>
+              <h3>Smart Learning</h3>
+              <p>Personalized content based on your progress</p>
+            </div>
+          </div>
+          <div class="feature">
+            <i class="fas fa-chart-line"></i>
+            <div>
+              <h3>Track Progress</h3>
+              <p>Monitor your improvement with analytics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel with Auth Forms -->
+    <div class="auth-container">
+      <div class="auth-box">
+        <div class="auth-header">
+          <div class="logo">
+            <span>TOTLE</span>
+          </div>
+        </div>
+
+        <!-- Separate Auth Buttons -->
+        <div class="auth-buttons">
+          <button id="showSignup" class="auth-tab-btn active">Sign Up</button>
+          <button id="showLogin" class="auth-tab-btn">Login</button>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signupForm" class="form-card">
+          <div class="input-group">
+            <input type="email" id="signupEmail" placeholder=" " />
+            <label for="signupEmail">Email</label>
+          </div>
+          <div class="input-group">
+            <input type="text" id="signupUsername" placeholder=" " />
+            <label for="signupUsername">Username</label>
+          </div>
+          <div class="input-group">
+            <input type="tel" id="signupPhone" placeholder=" " />
+            <label for="signupPhone">Mobile</label>
+          </div>
+          <div class="input-group password-group">
+            <input type="password" id="signupPassword" placeholder=" " />
+            <label for="signupPassword">Password</label>
+            <i class="fas fa-eye-slash toggle-password" data-target="signupPassword"></i>
+          </div>
+          <div class="input-group password-group">
+            <input type="password" id="signupConfirmPassword" placeholder=" " />
+            <label for="signupConfirmPassword">Confirm Password</label>
+            <i class="fas fa-eye-slash toggle-password" data-target="signupConfirmPassword"></i>
+          </div>
+          <button class="action-btn">Get OTP</button>
+          <button class="auth-btn">Sign up</button>
+          <div class="auth-footer">
+            <p>By continuing, you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+          </div>
+          <div class="divider">OR</div>
+          <div class="social-login">
+            <button class="social-btn google">
+              <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="Google">
+              <span>Continue with Google</span>
+            </button>
+            <button class="social-btn github">
+              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+              <span>Continue with GitHub</span>
+            </button>
+           
+          </div>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="form-card hidden">
+          <div class="input-group">
+            <input type="email" id="loginEmail" placeholder=" " />
+            <label for="loginEmail">Email</label>
+          </div>
+          <div class="input-group password-group">
+            <input type="password" id="loginPassword" placeholder=" " />
+            <label for="loginPassword">Password</label>
+            <i class="fas fa-eye-slash toggle-password" data-target="loginPassword"></i>
+          </div>
+          <div class="remember-me">
+  <input type="checkbox" id="remember">
+  <label for="remember">Remember me</label>
+</div>
+          <div class="forgot-password">
+    <a href="#">Forgot Password?</a>
+  </div>
+
+          <button class="auth-btn">Continue</button>
+          <div class="auth-footer">
+            <p>By continuing, you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+          </div>
+          <div class="divider">OR</div>
+          <div class="social-login">
+            <button class="social-btn google">
+              <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="Google">
+              <span>Continue with Google</span>
+            </button>
+            <button class="social-btn github">
+              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+              <span>Continue with GitHub</span>
+            </button>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>© 2025 TOTLE, Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
